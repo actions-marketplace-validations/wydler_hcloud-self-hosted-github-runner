@@ -19,10 +19,10 @@ jobs:
 
     steps:
       - name: Generate app token
-        uses: actions/create-github-app-token@bcd2ba49218906704ab6c1aa796996da409d3eb1  # v3.2.0
+        uses: actions/create-github-app-token@64ab729a6294000f5aa4a4bc0b73d1f32bc45510  # v3.3.0
         id: generate-token
         with:
-          app-id: ${{ secrets.GH_APP_SRP_ID }}
+          client-id: ${{ secrets.GH_APP_SRP_ID }}
           private-key: ${{ secrets.GH_APP_SRP_PRIVATE_KEY }}
 
       - name: Checkout Code
@@ -31,7 +31,7 @@ jobs:
           fetch-depth: 0
 
       - name: Synchronize the given branch now
-        uses: TobKed/github-forks-sync-action@2fb78daa46a630ff56455a63dec51ff00ba56e23  # v0.4.0
+        uses: TobKed/github-forks-sync-action@52429f0e1732f747a6d0654dd27867339237268f  # v0.5.1
         with:
           github_token: ${{ steps.generate-token.outputs.token }}
           upstream_repository: Cyclenerd/hcloud-github-runner
